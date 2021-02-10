@@ -28,22 +28,25 @@ const Transaction = {
   all: Storage.get(),
 
   add(transaction) {
-  
-      Transaction.all.push(transaction);
+      const message = confirm("Para adicionar uma transação pressione ok!");
+      if (message === true) {
+        confirm("Transação adicionada com sucesso!");
 
-      App.reload();    
-  },
+        Transaction.all.push(transaction);
 
-  edit(index) {
-    Modal.open(index)
+        App.reload(); 
+      }    
   },
 
   remove(index) {
-    
-      Transaction.all.splice(index, 1);
+      const message = confirm("Para excluir a transação pressione ok!");
+      if(message === true) {
+        confirm("Transação excluída com sucesso!")
 
-      App.reload(); 
-    
+        Transaction.all.splice(index, 1);
+
+        App.reload(); 
+      }
   },
 
   incomes() {
